@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Django Bootstrap Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <style>
+    body{
+      background: rgb(54, 217, 182);
+            background: linear-gradient(90deg, rgba(54, 217, 182, 1) 0%, rgba(32, 152, 126, 1) 43%, rgba(0, 212, 255, 1) 100%);
+    }
+    .calculator {
+      max-width: 65%;
+      margin: 0 auto;
+      background: linear-gradient(90deg, rgba(54, 217, 182, 1) 0%, rgba(32, 152, 126, 1) 43%, rgba(0, 212, 255, 1) 100%);
+      
+    }
+    .btn-block {
+      height: 90%;
+      font-size: 24px;
+      width: 90%;
+    }
+    #result {
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <h3 align="center">Django Bootstrap Calculator</h3>
+  <div class="container mt-5">
+    <div class="calculator card p-4">
+      <input type="text" id="result" class="form-control mb-3" readonly>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(7)">7</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(8)">8</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(9)">9</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary btn-block" onclick="appendOperator('+')">+</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(4)">4</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(5)">5</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(6)">6</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary btn-block" onclick="appendOperator('-')">-</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(1)">1</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(2)">2</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(3)">3</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary btn-block" onclick="appendOperator('*')">*</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="appendNumber(0)">0</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block" onclick="clearInput()">C</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-success btn-block" onclick="calculate()">=</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary btn-block" onclick="appendOperator('/')">/</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function appendNumber(number) {
+      var result = document.getElementById('result');
+      result.value += number;
+    }
+
+    function appendOperator(operator) {
+      var result = document.getElementById('result');
+      result.value += operator;
+    }
+
+    function calculate() {
+      var result = document.getElementById('result');
+      var expression = result.value;
+      var answer = eval(expression);
+      result.value = answer;
+    }
+
+    function clearInput() {
+      var result = document.getElementById('result');
+      result.value = '';
+    }
+  </script>
+</body>
+</html>
